@@ -1,0 +1,154 @@
+[gd_scene format=3 uid="uid://dvph366ndtgqe"]
+
+[ext_resource type="Script" uid="uid://cjoumsadc7hh6" path="res://scenes/track.gd" id="1_1b4qh"]
+[ext_resource type="PackedScene" uid="uid://carbat5rk66g0" path="res://assets/base_car.tscn" id="2_qcf88"]
+[ext_resource type="Script" uid="uid://bxp3i4cnonh8y" path="res://addons/road-generator/nodes/road_manager.gd" id="3_eydia"]
+[ext_resource type="Script" uid="uid://cph7euje06kel" path="res://addons/road-generator/nodes/road_container.gd" id="4_ihy54"]
+[ext_resource type="Material" uid="uid://dpashsuk5lr4x" path="res://addons/road-generator/resources/road_texture.material" id="5_4a6jl"]
+[ext_resource type="Script" uid="uid://difs1qg4mpcpw" path="res://addons/road-generator/nodes/road_point.gd" id="6_lb5ol"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_xtys4"]
+ground_color = Color(0, 0.5921569, 1, 1)
+energy_multiplier = 4.0
+
+[sub_resource type="Sky" id="Sky_f75wj"]
+sky_material = SubResource("PhysicalSkyMaterial_xtys4")
+
+[sub_resource type="Environment" id="Environment_e4klq"]
+background_mode = 2
+background_energy_multiplier = 1.97
+sky = SubResource("Sky_f75wj")
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 16.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_lquwl"]
+font_size = 24
+outline_size = 6
+outline_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7mycd"]
+font_size = 24
+outline_size = 6
+outline_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
+
+[node name="Node3D" type="Node3D" unique_id=1799311790]
+script = ExtResource("1_1b4qh")
+
+[node name="BaseCar" parent="." unique_id=347472439 instance=ExtResource("2_qcf88")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3147182, 0.8, -48.67168)
+mass = 500.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1798673590]
+transform = Transform3D(1, 0, 0, 0, 0.84999293, 0.52679414, 0, -0.52679414, 0.84999293, 0, 3.943784, 9.5841675)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1051960825]
+environment = SubResource("Environment_e4klq")
+
+[node name="RoadManager" type="Node3D" parent="." unique_id=1722746999]
+script = ExtResource("3_eydia")
+metadata/_custom_type_script = "uid://bxp3i4cnonh8y"
+
+[node name="Road_001" type="Node3D" parent="RoadManager" unique_id=1149838847]
+script = ExtResource("4_ihy54")
+material_resource = ExtResource("5_4a6jl")
+use_lowpoly_preview = true
+edge_containers = Array[NodePath]([NodePath(""), NodePath(""), NodePath(""), NodePath("")])
+edge_rp_targets = Array[NodePath]([NodePath(""), NodePath(""), NodePath(""), NodePath("")])
+edge_rp_target_dirs = Array[int]([-1, -1, -1, -1])
+edge_rp_locals = Array[NodePath]([NodePath("RP_001"), NodePath("RP_001"), NodePath("RP_002"), NodePath("RP_008")])
+edge_rp_local_dirs = Array[int]([0, 1, 1, 0])
+
+[node name="RP_001" type="Node3D" parent="RoadManager/Road_001" unique_id=936105704]
+script = ExtResource("6_lb5ol")
+traffic_dir = Array[int]([2, 2, 1, 1])
+lanes = Array[int]([2, 4, 4, 2])
+
+[node name="RP_002" type="Node3D" parent="RoadManager/Road_001" unique_id=1689176207]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -53.448677)
+script = ExtResource("6_lb5ol")
+traffic_dir = Array[int]([2, 2, 1, 1])
+lanes = Array[int]([2, 4, 4, 2])
+next_pt_init = NodePath("../RP_003")
+
+[node name="RP_003" type="Node3D" parent="RoadManager/Road_001" unique_id=648670765]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 68.80552)
+script = ExtResource("6_lb5ol")
+traffic_dir = Array[int]([2, 2, 1, 1])
+lanes = Array[int]([2, 4, 4, 2])
+prior_mag = 16.0
+next_mag = 16.0
+prior_pt_init = NodePath("../RP_002")
+next_pt_init = NodePath("../RP_004")
+
+[node name="RP_004" type="Node3D" parent="RoadManager/Road_001" unique_id=973944684]
+transform = Transform3D(-0.07014974, 0, -0.9975365, 0, 1, 0, 0.9975365, 0, -0.07014974, -64.336, 0, 96.40528)
+script = ExtResource("6_lb5ol")
+traffic_dir = Array[int]([2, 2, 1, 1])
+lanes = Array[int]([2, 4, 4, 2])
+prior_mag = 16.0
+next_mag = 16.0
+prior_pt_init = NodePath("../RP_003")
+next_pt_init = NodePath("../RP_005")
+
+[node name="RP_005" type="Node3D" parent="RoadManager/Road_001" unique_id=535625539]
+transform = Transform3D(-0.98666024, 0, 0.16279326, 0, 1, 0, -0.16279326, 0, -0.98666024, -118.61451, 0, 64.72388)
+script = ExtResource("6_lb5ol")
+traffic_dir = Array[int]([2, 2, 1, 1])
+lanes = Array[int]([2, 4, 4, 2])
+prior_mag = 16.0
+next_mag = 16.0
+prior_pt_init = NodePath("../RP_004")
+next_pt_init = NodePath("../RP_006")
+
+[node name="RP_006" type="Node3D" parent="RoadManager/Road_001" unique_id=795083143]
+transform = Transform3D(-0.98666024, 0, 0.16279326, 0, 1, 0, -0.16279326, 0, -0.98666024, -113.40513, 0, -68.38008)
+script = ExtResource("6_lb5ol")
+traffic_dir = Array[int]([2, 2, 1, 1])
+lanes = Array[int]([2, 4, 4, 2])
+prior_mag = 16.0
+next_mag = 16.0
+prior_pt_init = NodePath("../RP_005")
+next_pt_init = NodePath("../RP_007")
+
+[node name="RP_007" type="Node3D" parent="RoadManager/Road_001" unique_id=1641595930]
+transform = Transform3D(0.0030768812, 0, 0.99999535, 0, 1, 0, -0.99999535, 0, 0.0030768812, -63.40705, 0, -99.95321)
+script = ExtResource("6_lb5ol")
+traffic_dir = Array[int]([2, 2, 1, 1])
+lanes = Array[int]([2, 4, 4, 2])
+prior_mag = 16.0
+next_mag = 16.0
+prior_pt_init = NodePath("../RP_006")
+next_pt_init = NodePath("../RP_008")
+
+[node name="RP_008" type="Node3D" parent="RoadManager/Road_001" unique_id=333385580]
+transform = Transform3D(0.9999994, 0, -0.0011521894, 0, 1, 0, 0.0011521894, 0, 0.9999994, 0.05196762, 0, -53.438793)
+script = ExtResource("6_lb5ol")
+traffic_dir = Array[int]([2, 2, 1, 1])
+lanes = Array[int]([2, 4, 4, 2])
+prior_mag = 16.0
+next_mag = 16.0
+prior_pt_init = NodePath("../RP_007")
+
+[node name="speedometer" type="Label" parent="." unique_id=2009484104]
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 91.0
+offset_bottom = 38.0
+text = "Speed: "
+label_settings = SubResource("LabelSettings_lquwl")
+
+[node name="engine_idenfifier" type="Label" parent="." unique_id=81550610]
+offset_left = 7.0
+offset_top = 42.0
+offset_right = 97.0
+offset_bottom = 76.0
+text = "Engine: "
+label_settings = SubResource("LabelSettings_7mycd")
+
+[node name="mass_idenfifier" type="Label" parent="." unique_id=463944233]
+offset_left = 7.0
+offset_top = 80.0
+offset_right = 97.0
+offset_bottom = 114.0
+text = "Mass: "
+label_settings = SubResource("LabelSettings_7mycd")

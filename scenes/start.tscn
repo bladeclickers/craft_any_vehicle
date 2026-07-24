@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://bi8mnmbj2lhxc"]
+
+[ext_resource type="Script" uid="uid://ck5qsnxqxmpt2" path="res://misc/label.gd" id="1_jaeev"]
+[ext_resource type="Script" uid="uid://b5kulm1wy0ifv" path="res://misc/button.gd" id="2_u80x2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_e4klq"]
+font_size = 64
+outline_size = 16
+outline_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
+
+[sub_resource type="Theme" id="Theme_f75wj"]
+default_font_size = 24
+
+[node name="Start" type="Control" unique_id=1402427278]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1757779003]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.36078432, 0.5568628, 1, 1)
+
+[node name="Label" type="Label" parent="." unique_id=1440636304]
+layout_mode = 0
+offset_left = 289.0
+offset_top = 22.0
+offset_right = 815.0
+offset_bottom = 110.0
+text = "Craft Any Vehicle"
+label_settings = SubResource("LabelSettings_e4klq")
+script = ExtResource("1_jaeev")
+
+[node name="Button" type="Button" parent="." unique_id=827605143]
+layout_mode = 0
+offset_left = 526.0
+offset_top = 555.0
+offset_right = 642.0
+offset_bottom = 617.0
+theme = SubResource("Theme_f75wj")
+text = "Play"
+script = ExtResource("2_u80x2")
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
