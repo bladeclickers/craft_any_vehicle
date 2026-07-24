@@ -12,3 +12,6 @@ func _process(delta: float) -> void:
 	speedometer.text = "Speed: " + str(round(speed*10)/10)
 	engine_identifier.text = "Engine: " + Globals.engine_type
 	mass_identifier.text = "Mass: " + str(car.mass) + "kg"
+	
+	if Input.is_action_just_pressed("reset"):
+		get_tree().change_scene_to_file("res://scenes/editor.tscn")
