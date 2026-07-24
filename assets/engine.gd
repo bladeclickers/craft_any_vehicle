@@ -1,10 +1,10 @@
 extends StaticBody3D
 
-var engine_type = "Base Engine"
-var engine_force = 400.0
-var brake_force = 50.0
-var mass = 100.0
+@onready var mesh = $MeshInstance3D
 var mouse_hovering = false
+
+func change_color(color: Color):
+	mesh.mesh.material.albedo_color = color
 
 func _on_mouse_entered() -> void:
 	mouse_hovering = true

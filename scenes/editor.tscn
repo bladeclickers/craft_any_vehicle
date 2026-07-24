@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://carbat5rk66g0" path="res://assets/base_car.tscn" id="1_b1cmn"]
 [ext_resource type="Script" uid="uid://dtqa5iwsfqqvj" path="res://scenes/editor.gd" id="1_pxqd5"]
 [ext_resource type="Script" uid="uid://l5hgysxvqnos" path="res://misc/pivot.gd" id="3_ba0ut"]
+[ext_resource type="Script" uid="uid://byh3q8tqhceas" path="res://misc/property_pane.gd" id="4_q68jb"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_pxqd5"]
 ground_color = Color(0, 0.5921569, 1, 1)
@@ -20,6 +21,9 @@ ambient_light_energy = 16.0
 
 [sub_resource type="Theme" id="Theme_e4klq"]
 default_font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_ba0ut"]
+font_size = 12
 
 [sub_resource type="LabelSettings" id="LabelSettings_e4klq"]
 font_size = 18
@@ -59,7 +63,44 @@ text = "Play"
 [node name="property_pane" type="Panel" parent="." unique_id=792284564]
 visible = false
 offset_right = 299.0
-offset_bottom = 400.0
+offset_bottom = 146.0
+script = ExtResource("4_q68jb")
+
+[node name="weight_label" type="Label" parent="property_pane" unique_id=492105756]
+layout_mode = 0
+offset_left = 258.0
+offset_top = 115.0
+offset_right = 287.0
+offset_bottom = 133.0
+text = "100"
+label_settings = SubResource("LabelSettings_ba0ut")
+
+[node name="Label4" type="Label" parent="property_pane" unique_id=1291749495]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 115.0
+offset_right = 84.0
+offset_bottom = 133.0
+text = "Weight (kg)"
+label_settings = SubResource("LabelSettings_ba0ut")
+
+[node name="hp_label" type="Label" parent="property_pane" unique_id=867726272]
+layout_mode = 0
+offset_left = 258.0
+offset_top = 89.0
+offset_right = 287.0
+offset_bottom = 107.0
+text = "350"
+label_settings = SubResource("LabelSettings_ba0ut")
+
+[node name="Label2" type="Label" parent="property_pane" unique_id=759290947]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 89.0
+offset_right = 84.0
+offset_bottom = 107.0
+text = "Horsepower"
+label_settings = SubResource("LabelSettings_ba0ut")
 
 [node name="Label" type="Label" parent="property_pane" unique_id=1407833778]
 layout_mode = 0
@@ -69,5 +110,42 @@ offset_right = 217.0
 offset_bottom = 42.0
 text = "Engine Properties"
 label_settings = SubResource("LabelSettings_e4klq")
+
+[node name="engine_select" type="OptionButton" parent="property_pane" unique_id=2037547832]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 44.0
+offset_right = 216.0
+offset_bottom = 75.0
+selected = 0
+item_count = 3
+popup/item_0/text = "Base Engine"
+popup/item_0/id = 0
+popup/item_1/text = "Medium Engine"
+popup/item_1/id = 1
+popup/item_2/text = "Big Engine"
+popup/item_2/id = 2
+
+[node name="hp_slider" type="HSlider" parent="property_pane" unique_id=1068462551]
+layout_mode = 0
+offset_left = 98.0
+offset_top = 90.0
+offset_right = 252.0
+offset_bottom = 106.0
+max_value = 1000.0
+value = 350.0
+editable = false
+scrollable = false
+
+[node name="weight_slider" type="HSlider" parent="property_pane" unique_id=449795680]
+layout_mode = 0
+offset_left = 98.0
+offset_top = 116.0
+offset_right = 252.0
+offset_bottom = 132.0
+max_value = 1000.0
+value = 100.0
+editable = false
+scrollable = false
 
 [connection signal="pressed" from="play" to="." method="_on_button_pressed"]

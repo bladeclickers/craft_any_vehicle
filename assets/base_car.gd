@@ -17,14 +17,14 @@ var editor_mode = false
 @onready var r_wheels = [rr, rl]
 
 func _ready() -> void:
-	mass = BASE_MASS + engine.mass
+	mass = BASE_MASS + Globals.mass
 
 func _physics_process(delta):
 	if editor_mode:
 		return
 	
 	var speed = linear_velocity.dot(global_transform.basis.z)
-	cam.fov = clamp(lerp(cam.fov, 160 * (speed/35), 2), 80, 160)
+	cam.fov = clamp(lerp(cam.fov, 160 * (speed/40), 2), 80, 120)
 	
 	var target_steer = 0.0
 	if Input.is_action_pressed("a"):
@@ -37,15 +37,15 @@ func _physics_process(delta):
 
 	if Input.is_action_pressed("w"):
 		for wheel in wheels:
-			wheel.engine_force = engine.engine_force
+			wheel.engine_force = Globals.engine_force
 	elif Input.is_action_pressed("s"):
 		if speed > 0:
 			for wheel in wheels:
 				wheel.engine_force = 0
-				wheel.brake = engine.brake_force
+				wheel.brake = Globals.brake_force
 		else:
 			for wheel in wheels:
-				wheel.engine_force = -engine.engine_force/2
+				wheel.engine_force = -Globals.engine_force/2
 	else:
 		for wheel in wheels:
 			wheel.engine_force = 0

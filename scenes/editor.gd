@@ -14,6 +14,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("select") and engine.mouse_hovering:
 		property_pane.visible = !property_pane.visible
+		engine.change_color(Color(0, 255, 0) if property_pane.visible else Color(0, 0, 0))
 
 func _on_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/track.tscn")
