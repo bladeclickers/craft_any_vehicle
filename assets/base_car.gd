@@ -2,6 +2,8 @@ extends VehicleBody3D
 
 const BASE_MASS = 500
 const MAX_STEERANGLE = 0.15
+const THIRD_PERSON = Vector3(0, 0.733, -2.667)
+const FIRST_PERSON = Vector3(0, 0.351, 0.661)
 
 var editor_mode = false
 
@@ -26,6 +28,12 @@ func _physics_process(delta):
 	
 	var speed = linear_velocity.dot(global_transform.basis.z)
 	cam.fov = clamp(lerp(cam.fov, 160 * (speed/40), 2), 80, 120)
+	
+	if Input.is_action_just_pressed("camera"):
+		if cam.position == FIRST_PERSON:
+			cam.position = THIRD_PERSON
+		else:
+			cam.position = FIRST_PERSON
 	
 	var target_steer = 0.0
 	if Input.is_action_pressed("a"):
