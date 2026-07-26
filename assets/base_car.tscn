@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://c3qjrvdox1i85" path="res://assets/scripts/vehicle_wheel_3d_4.gd" id="5_u7av8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e4klq"]
-size = Vector3(1.2, 1.2, 2.9995117)
+size = Vector3(1.2, 0.9739014, 2.9995117)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ca31"]
 albedo_color = Color(0, 0, 0, 1)
@@ -30,16 +30,21 @@ albedo_color = Color(0, 0, 0, 1)
 material = SubResource("StandardMaterial3D_h7toe")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f75wj"]
+size = Vector3(1, 0.9423828, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m0rtx"]
+albedo_color = Color(0, 0, 0, 1)
 
 [node name="BaseCar" type="VehicleBody3D" unique_id=347472439]
 mass = 600.0
+center_of_mass_mode = 1
 script = ExtResource("1_5olyx")
 
 [node name="floor" type="CSGBox3D" parent="." unique_id=57415878]
 transform = Transform3D(1, 0, 0, 0, 0.073, 0, 0, 0, 3.228, 0, -0.20551383, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1080989114]
-transform = Transform3D(0.8206277, 0, 0, 0, 0.06322056, 0, 0, 0, 1.072821, 0, -0.19190997, 0.0002619192)
+transform = Transform3D(0.8206277, 0, 0, 0, 0.06322056, 0, 0, 0, 1.072821, 0, -0.19905701, 0.0002619192)
 shape = SubResource("BoxShape3D_e4klq")
 
 [node name="VehicleWheel3D" type="VehicleWheel3D" parent="." unique_id=818048100]
@@ -47,6 +52,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, -0.3, 1.2)
 use_as_traction = true
 use_as_steering = true
 wheel_radius = 0.3
+wheel_friction_slip = 2.5
 suspension_stiffness = 60.0
 damping_compression = 2.3
 damping_relaxation = 4.4
@@ -67,6 +73,7 @@ shape = SubResource("CylinderShape3D_5id6d")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, -0.3, -1.2)
 use_as_traction = true
 wheel_radius = 0.3
+wheel_friction_slip = 2.5
 suspension_stiffness = 60.0
 damping_compression = 2.3
 damping_relaxation = 4.4
@@ -88,6 +95,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, -0.3, 1.2)
 use_as_traction = true
 use_as_steering = true
 wheel_radius = 0.3
+wheel_friction_slip = 2.5
 suspension_stiffness = 60.0
 damping_compression = 2.3
 damping_relaxation = 4.4
@@ -108,6 +116,7 @@ shape = SubResource("CylinderShape3D_5id6d")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, -0.3, -1.2)
 use_as_traction = true
 wheel_radius = 0.3
+wheel_friction_slip = 2.5
 suspension_stiffness = 60.0
 damping_compression = 2.3
 damping_relaxation = 4.4
@@ -125,11 +134,11 @@ transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0
 shape = SubResource("CylinderShape3D_5id6d")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1753665445]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.733, -2.6673381)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.733, -2.667)
 fov = 80.0
 
 [node name="engine" type="StaticBody3D" parent="." unique_id=1722377717]
-transform = Transform3D(0.31097096, 0, 0, 0, 0.24565612, 0, 0, 0, 0.7086776, 0, -0.045682654, -1.1745133)
+transform = Transform3D(0.31097096, 0, 0, 0, 0.24565612, 0, 0, 0, 0.7086776, 0, -0.046, -1.175)
 script = ExtResource("2_1ca31")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="engine" unique_id=1873077162]
@@ -137,7 +146,25 @@ transform = Transform3D(1.07877, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("BoxMesh_f75wj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="engine" unique_id=249549347]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.028808624, 0)
 shape = SubResource("BoxShape3D_f75wj")
+
+[node name="seat" type="Node3D" parent="." unique_id=1522892444]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.014, -0.77)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="seat" unique_id=1767645845]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0014648438, 0.16864014, 0.6073594)
+use_collision = true
+size = Vector3(0.45996094, 0.6627197, 0.08691406)
+material = SubResource("StandardMaterial3D_m0rtx")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="seat" unique_id=1241736392]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0014648438, -0.11432906, 0.81501514)
+use_collision = true
+size = Vector3(0.45996094, 0.098587036, 0.32666016)
+material = SubResource("StandardMaterial3D_m0rtx")
+
+[node name="body" type="Node3D" parent="." unique_id=2051364754]
 
 [connection signal="mouse_entered" from="VehicleWheel3D/StaticBody3D" to="VehicleWheel3D" method="_on_static_body_3d_mouse_entered"]
 [connection signal="mouse_exited" from="VehicleWheel3D/StaticBody3D" to="VehicleWheel3D" method="_on_static_body_3d_mouse_exited"]

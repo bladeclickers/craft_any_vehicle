@@ -3,7 +3,10 @@ extends VehicleBody3D
 const BASE_MASS = 500
 const MAX_STEERANGLE = 0.15
 const THIRD_PERSON = Vector3(0, 0.733, -2.667)
-const FIRST_PERSON = Vector3(0, 0.351, 0.661)
+const FIRST_PERSON = Vector3(0, 0.441, 0.106)
+const BASE_CENTER_MASS = Vector3(0, 0, 0)
+const MEDIUM_CENTER_MASS = Vector3(0, 0, -0.25)
+const BIG_CENTER_MASS = Vector3(0, 0, -0.5)
 
 var editor_mode = false
 
@@ -32,15 +35,22 @@ func _physics_process(delta):
 	
 	for wheel in wheels:
 		wheel.find_child("StaticBody3D").find_child("CollisionShape3D").disabled = true
+		
+	if Globals.engine_type == "Base Engine":
+		center_of_mass.z = BASE_CENTER_MASS.z
+	elif Globals.engine_type == "Medium Engine":
+		center_of_mass.z = MEDIUM_CENTER_MASS.z if Globals.rear_engine else -MEDIUM_CENTER_MASS.z
+	elif Globals.engine_type == "Big Engine":
+		center_of_mass.z = BIG_CENTER_MASS.z if Globals.rear_engine else -BIG_CENTER_MASS.z
 	
 	var speed = linear_velocity.dot(global_transform.basis.z)
 	cam.fov = clamp(80 + speed/1.5, 80, 120)
 	
 	if Input.is_action_just_pressed("camera"):
-		if cam.position == FIRST_PERSON:
-			cam.position = THIRD_PERSON
-		else:
+		if cam.position == THIRD_PERSON:
 			cam.position = FIRST_PERSON
+		else:
+			cam.position = THIRD_PERSON
 	
 	var target_steer = 0.0
 	if Input.is_action_pressed("a"):

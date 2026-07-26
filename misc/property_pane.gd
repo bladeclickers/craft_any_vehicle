@@ -7,8 +7,10 @@ var prev_id = 0
 @onready var hp_label = $hp_label
 @onready var weight_label = $weight_label
 @onready var engine_select = $engine_select
+@onready var position_toggle = $position_toggle
 
 func _process(_delta: float) -> void:
+	Globals.rear_engine = position_toggle.button_pressed
 	var id = engine_select.get_selected_id()
 	if id != prev_id:
 		if id == 0:

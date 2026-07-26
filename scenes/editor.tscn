@@ -29,6 +29,9 @@ font_size = 12
 [sub_resource type="LabelSettings" id="LabelSettings_e4klq"]
 font_size = 18
 
+[sub_resource type="Theme" id="Theme_xg7d5"]
+default_font_size = 12
+
 [node name="Editor" type="Node3D" unique_id=240211013]
 script = ExtResource("1_pxqd5")
 
@@ -64,7 +67,7 @@ text = "Play"
 [node name="engine_pane" type="Panel" parent="." unique_id=792284564]
 visible = false
 offset_right = 299.0
-offset_bottom = 146.0
+offset_bottom = 165.0
 script = ExtResource("4_q68jb")
 
 [node name="weight_label" type="Label" parent="engine_pane" unique_id=492105756]
@@ -148,6 +151,17 @@ max_value = 500.0
 value = 100.0
 editable = false
 scrollable = false
+
+[node name="position_toggle" type="CheckButton" parent="engine_pane" unique_id=774604122]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 133.0
+offset_right = 124.0
+offset_bottom = 164.0
+theme = SubResource("Theme_xg7d5")
+button_pressed = true
+text = "Rear Engine"
+alignment = 2
 
 [node name="wheel_pane" type="Panel" parent="." unique_id=1620656456]
 visible = false
