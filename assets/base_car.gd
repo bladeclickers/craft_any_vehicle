@@ -23,8 +23,7 @@ var editor_mode = false
 
 func _ready() -> void:
 	engine.change_color(Color(0,0,0))
-	for wheel in wheels:
-		wheel.change_color(Color(0,0,0))
+	fr.change_color(Color(0,0,0))
 	mass = BASE_MASS + Globals.mass
 
 func _physics_process(delta):

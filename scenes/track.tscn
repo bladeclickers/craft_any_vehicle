@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dvph366ndtgqe"]
 
-[ext_resource type="Script" uid="uid://cjoumsadc7hh6" path="res://scenes/track.gd" id="1_1b4qh"]
+[ext_resource type="Script" uid="uid://cjoumsadc7hh6" path="res://scripts/track/track.gd" id="1_1b4qh"]
 [ext_resource type="PackedScene" uid="uid://carbat5rk66g0" path="res://assets/base_car.tscn" id="2_qcf88"]
 [ext_resource type="Script" uid="uid://bxp3i4cnonh8y" path="res://addons/road-generator/nodes/road_manager.gd" id="3_eydia"]
 [ext_resource type="Script" uid="uid://cph7euje06kel" path="res://addons/road-generator/nodes/road_container.gd" id="4_ihy54"]

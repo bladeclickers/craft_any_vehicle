@@ -31,11 +31,10 @@ func _process(_delta: float) -> void:
 	
 	var hovering_wheel = false
 	
-	for wheel in wheels:
-		if wheel.hovering_wheel:
-			hovering_wheel = true
-			if not wheel_pane.visible:
-				wheel.change_color(Color(0, 0.5, 0))
+	if fr.hovering_wheel:
+		hovering_wheel = true
+		if not wheel_pane.visible:
+			fr.change_color(Color(0, 0.5, 0))
 	
 	if hovering_wheel and Input.is_action_just_pressed("select") and not engine_pane.visible:
 		wheel_pane.visible = !wheel_pane.visible

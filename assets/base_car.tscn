@@ -3,9 +3,6 @@
 [ext_resource type="Script" uid="uid://tlg06hv6xh6u" path="res://assets/base_car.gd" id="1_5olyx"]
 [ext_resource type="Script" uid="uid://ygdgkle6aa4f" path="res://assets/scripts/engine.gd" id="2_1ca31"]
 [ext_resource type="Script" uid="uid://calafhrv463i8" path="res://assets/scripts/wheel.gd" id="2_h7toe"]
-[ext_resource type="Script" uid="uid://cfyb3y2p56f2r" path="res://assets/scripts/vehicle_wheel_3d_2.gd" id="3_mtj2f"]
-[ext_resource type="Script" uid="uid://cs65cwogeshvi" path="res://assets/scripts/vehicle_wheel_3d_3.gd" id="4_vbq03"]
-[ext_resource type="Script" uid="uid://c3qjrvdox1i85" path="res://assets/scripts/vehicle_wheel_3d_4.gd" id="5_u7av8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e4klq"]
 size = Vector3(1.2, 0.9739014, 2.9995117)
@@ -77,7 +74,6 @@ wheel_friction_slip = 2.5
 suspension_stiffness = 60.0
 damping_compression = 2.3
 damping_relaxation = 4.4
-script = ExtResource("3_mtj2f")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="VehicleWheel3D2" unique_id=795989604]
 transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0)
@@ -99,7 +95,6 @@ wheel_friction_slip = 2.5
 suspension_stiffness = 60.0
 damping_compression = 2.3
 damping_relaxation = 4.4
-script = ExtResource("4_vbq03")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="VehicleWheel3D3" unique_id=1222342919]
 transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 0, 0, 0)
@@ -120,7 +115,6 @@ wheel_friction_slip = 2.5
 suspension_stiffness = 60.0
 damping_compression = 2.3
 damping_relaxation = 4.4
-script = ExtResource("5_u7av8")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="VehicleWheel3D4" unique_id=1304060694]
 transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 0, 0, 0)
@@ -168,11 +162,11 @@ material = SubResource("StandardMaterial3D_m0rtx")
 
 [connection signal="mouse_entered" from="VehicleWheel3D/StaticBody3D" to="VehicleWheel3D" method="_on_static_body_3d_mouse_entered"]
 [connection signal="mouse_exited" from="VehicleWheel3D/StaticBody3D" to="VehicleWheel3D" method="_on_static_body_3d_mouse_exited"]
-[connection signal="mouse_entered" from="VehicleWheel3D2/StaticBody3D" to="VehicleWheel3D2" method="_on_static_body_3d_mouse_entered"]
-[connection signal="mouse_exited" from="VehicleWheel3D2/StaticBody3D" to="VehicleWheel3D2" method="_on_static_body_3d_mouse_exited"]
-[connection signal="mouse_entered" from="VehicleWheel3D3/StaticBody3D" to="VehicleWheel3D3" method="_on_static_body_3d_mouse_entered"]
-[connection signal="mouse_exited" from="VehicleWheel3D3/StaticBody3D" to="VehicleWheel3D3" method="_on_static_body_3d_mouse_exited"]
-[connection signal="mouse_entered" from="VehicleWheel3D4/StaticBody3D" to="VehicleWheel3D4" method="_on_static_body_3d_mouse_entered"]
-[connection signal="mouse_exited" from="VehicleWheel3D4/StaticBody3D" to="VehicleWheel3D4" method="_on_static_body_3d_mouse_exited"]
+[connection signal="mouse_entered" from="VehicleWheel3D2/StaticBody3D" to="VehicleWheel3D" method="_on_static_body_3d_mouse_entered"]
+[connection signal="mouse_exited" from="VehicleWheel3D2/StaticBody3D" to="VehicleWheel3D" method="_on_static_body_3d_mouse_exited"]
+[connection signal="mouse_entered" from="VehicleWheel3D3/StaticBody3D" to="VehicleWheel3D" method="_on_static_body_3d_mouse_entered"]
+[connection signal="mouse_exited" from="VehicleWheel3D3/StaticBody3D" to="VehicleWheel3D" method="_on_static_body_3d_mouse_exited"]
+[connection signal="mouse_entered" from="VehicleWheel3D4/StaticBody3D" to="VehicleWheel3D" method="_on_static_body_3d_mouse_entered"]
+[connection signal="mouse_exited" from="VehicleWheel3D4/StaticBody3D" to="VehicleWheel3D" method="_on_static_body_3d_mouse_exited"]
 [connection signal="mouse_entered" from="engine" to="engine" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="engine" to="engine" method="_on_mouse_exited"]
