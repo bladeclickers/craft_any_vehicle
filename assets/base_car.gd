@@ -17,6 +17,7 @@ var editor_mode = false
 @onready var r_wheels = [rr, rl]
 
 func _ready() -> void:
+	engine.change_color(Color(0,0,0))
 	mass = BASE_MASS + Globals.mass
 
 func _physics_process(delta):

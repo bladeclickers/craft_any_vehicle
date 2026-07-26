@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://ygdgkle6aa4f" path="res://assets/engine.gd" id="2_1ca31"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e4klq"]
-size = Vector3(1.2, 1.2, 3)
+size = Vector3(1.2, 1.2, 2.9995117)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ca31"]
 albedo_color = Color(0, 0, 0, 1)
@@ -31,7 +31,7 @@ script = ExtResource("1_5olyx")
 transform = Transform3D(1, 0, 0, 0, 0.073, 0, 0, 0, 3.228, 0, -0.20551383, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1080989114]
-transform = Transform3D(1, 0, 0, 0, 0.06322056, 0, 0, 0, 1, 0, -0.19190997, 0)
+transform = Transform3D(0.8206277, 0, 0, 0, 0.06322056, 0, 0, 0, 1.072821, 0, -0.19190997, 0.0002619192)
 shape = SubResource("BoxShape3D_e4klq")
 
 [node name="VehicleWheel3D" type="VehicleWheel3D" parent="." unique_id=818048100]

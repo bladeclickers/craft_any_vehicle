@@ -8,16 +8,16 @@ var prev_id = 0
 @onready var weight_label = $weight_label
 @onready var engine_select = $engine_select
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var id = engine_select.get_selected_id()
 	if id != prev_id:
 		if id == 0:
-			hp_slider.value = 350
+			hp_slider.value = 400
 			weight_slider.value = 100
-			hp_label.text = "350"
+			hp_label.text = "400"
 			weight_label.text = "100"
 			Globals.engine_type = "Base Engine"
-			Globals.engine_force = 350.0
+			Globals.engine_force = 400.0
 			Globals.mass = 100.0
 		elif id == 1:
 			hp_slider.value = 700
@@ -28,11 +28,11 @@ func _process(delta: float) -> void:
 			Globals.engine_force = 700.0
 			Globals.mass = 200.0
 		elif id == 2:
-			hp_slider.value = 1000
+			hp_slider.value = 1200
 			weight_slider.value = 400
-			hp_label.text = "1000"
+			hp_label.text = "1200"
 			weight_label.text = "400"
 			Globals.engine_type = "Big Engine"
-			Globals.engine_force = 1000.0
+			Globals.engine_force = 1200.0
 			Globals.mass = 400.0
 		prev_id = id

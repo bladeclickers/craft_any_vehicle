@@ -7,7 +7,7 @@ extends Node3D
 @onready var engine_identifier = $engine_idenfifier
 @onready var mass_identifier = $mass_idenfifier
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var speed = car.linear_velocity.dot(car.global_transform.basis.z)
 	speedometer.text = "Speed: " + str(round(speed*10)/10)
 	engine_identifier.text = "Engine: " + Globals.engine_type
