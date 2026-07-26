@@ -20,11 +20,18 @@ var editor_mode = false
 
 func _ready() -> void:
 	engine.change_color(Color(0,0,0))
+	for wheel in wheels:
+		wheel.change_color(Color(0,0,0))
 	mass = BASE_MASS + Globals.mass
 
 func _physics_process(delta):
 	if editor_mode:
+		for wheel in wheels:
+			wheel.find_child("StaticBody3D").find_child("CollisionShape3D").disabled = false
 		return
+	
+	for wheel in wheels:
+		wheel.find_child("StaticBody3D").find_child("CollisionShape3D").disabled = true
 	
 	var speed = linear_velocity.dot(global_transform.basis.z)
 	cam.fov = clamp(lerp(cam.fov, 160 * (speed/40), 2), 80, 120)

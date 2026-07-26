@@ -1,7 +1,11 @@
 [gd_scene format=3 uid="uid://carbat5rk66g0"]
 
 [ext_resource type="Script" uid="uid://tlg06hv6xh6u" path="res://assets/base_car.gd" id="1_5olyx"]
-[ext_resource type="Script" uid="uid://ygdgkle6aa4f" path="res://assets/engine.gd" id="2_1ca31"]
+[ext_resource type="Script" uid="uid://ygdgkle6aa4f" path="res://assets/scripts/engine.gd" id="2_1ca31"]
+[ext_resource type="Script" uid="uid://calafhrv463i8" path="res://assets/scripts/wheel.gd" id="2_h7toe"]
+[ext_resource type="Script" uid="uid://cfyb3y2p56f2r" path="res://assets/scripts/vehicle_wheel_3d_2.gd" id="3_mtj2f"]
+[ext_resource type="Script" uid="uid://cs65cwogeshvi" path="res://assets/scripts/vehicle_wheel_3d_3.gd" id="4_vbq03"]
+[ext_resource type="Script" uid="uid://c3qjrvdox1i85" path="res://assets/scripts/vehicle_wheel_3d_4.gd" id="5_u7av8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e4klq"]
 size = Vector3(1.2, 1.2, 2.9995117)
@@ -14,6 +18,10 @@ material = SubResource("StandardMaterial3D_1ca31")
 top_radius = 0.3
 bottom_radius = 0.3
 height = 0.2
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5id6d"]
+height = 0.2
+radius = 0.3
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h7toe"]
 albedo_color = Color(0, 0, 0, 1)
@@ -42,10 +50,18 @@ wheel_radius = 0.3
 suspension_stiffness = 60.0
 damping_compression = 2.3
 damping_relaxation = 4.4
+script = ExtResource("2_h7toe")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="VehicleWheel3D" unique_id=1890555161]
 transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("CylinderMesh_e4klq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="VehicleWheel3D" unique_id=1120835310]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VehicleWheel3D/StaticBody3D" unique_id=1784773210]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_5id6d")
 
 [node name="VehicleWheel3D2" type="VehicleWheel3D" parent="." unique_id=1741835340]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, -0.3, -1.2)
@@ -54,10 +70,18 @@ wheel_radius = 0.3
 suspension_stiffness = 60.0
 damping_compression = 2.3
 damping_relaxation = 4.4
+script = ExtResource("3_mtj2f")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="VehicleWheel3D2" unique_id=795989604]
 transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("CylinderMesh_e4klq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="VehicleWheel3D2" unique_id=1755624812]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VehicleWheel3D2/StaticBody3D" unique_id=731085178]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_5id6d")
 
 [node name="VehicleWheel3D3" type="VehicleWheel3D" parent="." unique_id=1612102353]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, -0.3, 1.2)
@@ -67,10 +91,18 @@ wheel_radius = 0.3
 suspension_stiffness = 60.0
 damping_compression = 2.3
 damping_relaxation = 4.4
+script = ExtResource("4_vbq03")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="VehicleWheel3D3" unique_id=1222342919]
 transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("CylinderMesh_e4klq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="VehicleWheel3D3" unique_id=1201241858]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VehicleWheel3D3/StaticBody3D" unique_id=1543375544]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_5id6d")
 
 [node name="VehicleWheel3D4" type="VehicleWheel3D" parent="." unique_id=195580118]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, -0.3, -1.2)
@@ -79,10 +111,18 @@ wheel_radius = 0.3
 suspension_stiffness = 60.0
 damping_compression = 2.3
 damping_relaxation = 4.4
+script = ExtResource("5_u7av8")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="VehicleWheel3D4" unique_id=1304060694]
 transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("CylinderMesh_e4klq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="VehicleWheel3D4" unique_id=82967413]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VehicleWheel3D4/StaticBody3D" unique_id=1633625167]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_5id6d")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1753665445]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.733, -2.6673381)
@@ -98,5 +138,13 @@ mesh = SubResource("BoxMesh_f75wj")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="engine" unique_id=249549347]
 shape = SubResource("BoxShape3D_f75wj")
 
+[connection signal="mouse_entered" from="VehicleWheel3D/StaticBody3D" to="VehicleWheel3D" method="_on_static_body_3d_mouse_entered"]
+[connection signal="mouse_exited" from="VehicleWheel3D/StaticBody3D" to="VehicleWheel3D" method="_on_static_body_3d_mouse_exited"]
+[connection signal="mouse_entered" from="VehicleWheel3D2/StaticBody3D" to="VehicleWheel3D2" method="_on_static_body_3d_mouse_entered"]
+[connection signal="mouse_exited" from="VehicleWheel3D2/StaticBody3D" to="VehicleWheel3D2" method="_on_static_body_3d_mouse_exited"]
+[connection signal="mouse_entered" from="VehicleWheel3D3/StaticBody3D" to="VehicleWheel3D3" method="_on_static_body_3d_mouse_entered"]
+[connection signal="mouse_exited" from="VehicleWheel3D3/StaticBody3D" to="VehicleWheel3D3" method="_on_static_body_3d_mouse_exited"]
+[connection signal="mouse_entered" from="VehicleWheel3D4/StaticBody3D" to="VehicleWheel3D4" method="_on_static_body_3d_mouse_entered"]
+[connection signal="mouse_exited" from="VehicleWheel3D4/StaticBody3D" to="VehicleWheel3D4" method="_on_static_body_3d_mouse_exited"]
 [connection signal="mouse_entered" from="engine" to="engine" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="engine" to="engine" method="_on_mouse_exited"]

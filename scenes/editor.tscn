@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dtqa5iwsfqqvj" path="res://scenes/editor.gd" id="1_pxqd5"]
 [ext_resource type="Script" uid="uid://l5hgysxvqnos" path="res://misc/pivot.gd" id="3_ba0ut"]
 [ext_resource type="Script" uid="uid://byh3q8tqhceas" path="res://misc/property_pane.gd" id="4_q68jb"]
+[ext_resource type="Script" uid="uid://dydtamj26k5cv" path="res://misc/wheel_pane.gd" id="5_xg7d5"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_pxqd5"]
 ground_color = Color(0, 0.5921569, 1, 1)
@@ -147,5 +148,47 @@ max_value = 500.0
 value = 100.0
 editable = false
 scrollable = false
+
+[node name="wheel_pane" type="Panel" parent="." unique_id=1620656456]
+visible = false
+offset_right = 299.0
+offset_bottom = 69.0
+script = ExtResource("5_xg7d5")
+
+[node name="brake_label" type="Label" parent="wheel_pane" unique_id=2042511593]
+layout_mode = 0
+offset_left = 258.0
+offset_top = 42.0
+offset_right = 287.0
+offset_bottom = 60.0
+text = "40"
+label_settings = SubResource("LabelSettings_ba0ut")
+
+[node name="Label2" type="Label" parent="wheel_pane" unique_id=845364441]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 42.0
+offset_right = 87.0
+offset_bottom = 60.0
+text = "Brake Power"
+label_settings = SubResource("LabelSettings_ba0ut")
+
+[node name="Label" type="Label" parent="wheel_pane" unique_id=1185376386]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 8.0
+offset_right = 217.0
+offset_bottom = 42.0
+text = "Wheel Properties"
+label_settings = SubResource("LabelSettings_e4klq")
+
+[node name="brake_slider" type="HSlider" parent="wheel_pane" unique_id=2032139938]
+layout_mode = 0
+offset_left = 98.0
+offset_top = 43.0
+offset_right = 252.0
+offset_bottom = 59.0
+max_value = 200.0
+value = 40.0
 
 [connection signal="pressed" from="play" to="." method="_on_button_pressed"]

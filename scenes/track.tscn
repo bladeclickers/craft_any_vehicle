@@ -145,10 +145,18 @@ offset_bottom = 76.0
 text = "Engine: "
 label_settings = SubResource("LabelSettings_7mycd")
 
-[node name="mass_idenfifier" type="Label" parent="." unique_id=463944233]
+[node name="brake_idenfifier" type="Label" parent="." unique_id=958514530]
 offset_left = 7.0
 offset_top = 80.0
-offset_right = 97.0
+offset_right = 161.0
 offset_bottom = 114.0
+text = "Brake Power:"
+label_settings = SubResource("LabelSettings_7mycd")
+
+[node name="mass_idenfifier" type="Label" parent="." unique_id=463944233]
+offset_left = 7.0
+offset_top = 118.0
+offset_right = 97.0
+offset_bottom = 152.0
 text = "Mass: "
 label_settings = SubResource("LabelSettings_7mycd")
