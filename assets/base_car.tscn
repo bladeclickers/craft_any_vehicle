@@ -129,10 +129,11 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0
 fov = 80.0
 
 [node name="engine" type="StaticBody3D" parent="." unique_id=1722377717]
-transform = Transform3D(0.27355435, 0, 0, 0, 0.24565612, 0, 0, 0, 0.593959, 0, -0.045682654, -1.1745133)
+transform = Transform3D(0.31097096, 0, 0, 0, 0.24565612, 0, 0, 0, 0.7086776, 0, -0.045682654, -1.1745133)
 script = ExtResource("2_1ca31")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="engine" unique_id=1873077162]
+transform = Transform3D(1.07877, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("BoxMesh_f75wj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="engine" unique_id=249549347]

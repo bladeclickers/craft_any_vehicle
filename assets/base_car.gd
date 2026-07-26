@@ -34,7 +34,7 @@ func _physics_process(delta):
 		wheel.find_child("StaticBody3D").find_child("CollisionShape3D").disabled = true
 	
 	var speed = linear_velocity.dot(global_transform.basis.z)
-	cam.fov = clamp(lerp(cam.fov, 160 * (speed/40), 2), 80, 120)
+	cam.fov = clamp(80 + speed/1.5, 80, 120)
 	
 	if Input.is_action_just_pressed("camera"):
 		if cam.position == FIRST_PERSON:
