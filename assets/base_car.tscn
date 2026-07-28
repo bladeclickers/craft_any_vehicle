@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://ygdgkle6aa4f" path="res://assets/scripts/engine.gd" id="2_1ca31"]
 [ext_resource type="Script" uid="uid://calafhrv463i8" path="res://assets/scripts/wheel.gd" id="2_h7toe"]
 [ext_resource type="AudioStream" uid="uid://cmtaefea4gy1d" path="res://sfx/car.mp3" id="4_mtj2f"]
+[ext_resource type="Script" uid="uid://l5hgysxvqnos" path="res://assets/scripts/pivot.gd" id="5_vbq03"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e4klq"]
 size = Vector3(1.2, 0.9739014, 2.9995117)
@@ -128,7 +129,10 @@ collision_layer = 2
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("CylinderShape3D_5id6d")
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1753665445]
+[node name="pivot" type="Node3D" parent="." unique_id=119271785]
+script = ExtResource("5_vbq03")
+
+[node name="Camera3D" type="Camera3D" parent="pivot" unique_id=1753665445]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.733, -2.667)
 fov = 80.0
 

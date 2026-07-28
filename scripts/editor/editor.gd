@@ -10,7 +10,7 @@ const BRICK_SCENE = preload("res://assets/brick.tscn")
 @onready var rl = $"BaseCar/VehicleWheel3D4"
 @onready var wheels = [fr, fl, rr, rl]
 
-@onready var car_cam = $BaseCar/Camera3D
+@onready var car_cam = $BaseCar/pivot/Camera3D
 @onready var editor_cam = $pivot/Camera3D
 @onready var engine_pane = $engine_pane
 @onready var wheel_pane = $wheel_pane

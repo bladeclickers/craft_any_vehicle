@@ -18,7 +18,7 @@ var loaded = false
 @onready var rr = $"VehicleWheel3D2"
 @onready var fl = $"VehicleWheel3D3"
 @onready var rl = $"VehicleWheel3D4"
-@onready var cam = $Camera3D
+@onready var cam = $pivot/Camera3D
 @onready var engine = $engine
 
 @onready var wheels = [fr, fl, rr, rl]
