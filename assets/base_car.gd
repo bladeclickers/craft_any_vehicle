@@ -29,10 +29,13 @@ func _ready() -> void:
 	engine.change_color(Color(0,0,0))
 	fr.change_color(Color(0,0,0))
 	mass = BASE_MASS + Globals.mass
+	var idx = 0
 	for brick_pos in Globals.bricks:
 		var brick = BRICK_SCENE.instantiate()
+		brick.name = "brick" + str(idx)
 		brick.position = brick_pos
 		add_child(brick)
+		idx += 1
 	loaded = true
 
 func _physics_process(delta):
