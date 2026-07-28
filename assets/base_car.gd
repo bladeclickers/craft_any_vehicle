@@ -8,8 +8,12 @@ const BASE_CENTER_MASS = Vector3(0, 0, 0)
 const MEDIUM_CENTER_MASS = Vector3(0, 0, -0.25)
 const BIG_CENTER_MASS = Vector3(0, 0, -0.5)
 
-var editor_mode = false
+const BRICK_SCENE = preload("res://assets/brick.tscn")
 
+var editor_mode = false
+var loaded = false
+
+@onready var stream = $AudioStreamPlayer3D
 @onready var fr = $"VehicleWheel3D"
 @onready var rr = $"VehicleWheel3D2"
 @onready var fl = $"VehicleWheel3D3"
@@ -25,6 +29,11 @@ func _ready() -> void:
 	engine.change_color(Color(0,0,0))
 	fr.change_color(Color(0,0,0))
 	mass = BASE_MASS + Globals.mass
+	for brick_pos in Globals.bricks:
+		var brick = BRICK_SCENE.instantiate()
+		brick.position = brick_pos
+		add_child(brick)
+	loaded = true
 
 func _physics_process(delta):
 	if editor_mode:
@@ -45,6 +54,15 @@ func _physics_process(delta):
 	var speed = linear_velocity.dot(global_transform.basis.z)
 	cam.fov = clamp(80 + speed/1.5, 80, 120)
 	
+	var pitch = abs(speed/14)
+	stream.pitch_scale = pitch if pitch > 0 else 0.1
+	
+	if speed != 0 and (Input.is_action_pressed("w") or Input.is_action_pressed("s")):
+		if not stream.playing or stream.get_playback_position() > 1.9:
+			stream.play(0.1)
+	else:
+		stream.stop()
+	
 	if Input.is_action_just_pressed("camera"):
 		if cam.position == THIRD_PERSON:
 			cam.position = FIRST_PERSON
@@ -64,7 +82,7 @@ func _physics_process(delta):
 		for wheel in wheels:
 			wheel.engine_force = Globals.engine_force
 	elif Input.is_action_pressed("s"):
-		if speed > 0:
+		if speed > 0.3:
 			for wheel in wheels:
 				wheel.engine_force = 0
 				wheel.brake = Globals.brake_force

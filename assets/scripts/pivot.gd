@@ -1,5 +1,7 @@
 extends Node3D
 
+@onready var cam = $Camera3D
+
 var sensitivity := 0.005
 var rotating := false
 
@@ -9,8 +11,8 @@ func _unhandled_input(event):
 			rotating = event.pressed
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED if rotating else Input.MOUSE_MODE_VISIBLE
 
-	if event is InputEventMouseMotion and rotating:
-		rotate_y(-event.relative.x * sensitivity)
-
-		rotation.x -= event.relative.y * sensitivity
-		rotation.x = clamp(rotation.x, deg_to_rad(-60), deg_to_rad(60))
+	if event is InputEventMouseMotion:
+		if rotating:
+			rotate_y(-event.relative.x * sensitivity)
+			rotation.x -= event.relative.y * sensitivity
+			rotation.x = clamp(rotation.x, deg_to_rad(-60), deg_to_rad(60))
