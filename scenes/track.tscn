@@ -111,7 +111,7 @@ prior_pt_init = NodePath("../RP_005")
 next_pt_init = NodePath("../RP_007")
 
 [node name="RP_007" type="Node3D" parent="RoadManager/Road_001" unique_id=1641595930]
-transform = Transform3D(0.0030768812, 0, 0.99999535, 0.99957436, -0.029013336, -0.0030755857, 0.029013187, 0.99957895, -8.927053e-05, -63.40705, 0, -99.95321)
+transform = Transform3D(0.0030229716, 0.0017453631, 0.9999939, 0.8660203, 0.49999684, -0.0034906515, -0.5, 0.86602527, -4.3711122e-08, -63.40705, 0, -99.95321)
 script = ExtResource("6_lb5ol")
 traffic_dir = Array[int]([2, 2, 1, 1])
 lanes = Array[int]([2, 4, 4, 2])

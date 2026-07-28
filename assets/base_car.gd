@@ -57,14 +57,26 @@ func _physics_process(delta):
 	var speed = linear_velocity.dot(global_transform.basis.z)
 	cam.fov = clamp(80 + speed/1.5, 80, 120)
 	
-	var pitch = abs(speed/14)
-	stream.pitch_scale = pitch if pitch > 0 else 0.1
-	
+	var pitch = abs(speed / 14.0)
+	var fade_speed = 2.0
+
 	if speed != 0 and (Input.is_action_pressed("w") or Input.is_action_pressed("s")):
-		if not stream.playing or stream.get_playback_position() > 1.9:
-			stream.play(0.1)
+		stream.pitch_scale = max(pitch, 0.1)
+			
+		if not (Input.is_action_pressed("s") and speed > 0.3):
+			if not stream.playing:
+				stream.volume_db = -40.0
+				stream.play(0.1)
+			elif stream.get_playback_position() > 1.9:
+				stream.play(0.1)
+
+		stream.volume_db = lerp(stream.volume_db, 0.0, fade_speed * delta)
 	else:
-		stream.stop()
+		if stream.playing:
+			stream.volume_db = lerp(stream.volume_db, -40.0, fade_speed * delta)
+
+			if stream.volume_db <= -39.0:
+				stream.stop()
 	
 	if Input.is_action_just_pressed("camera"):
 		if cam.position == THIRD_PERSON:
@@ -91,7 +103,9 @@ func _physics_process(delta):
 				wheel.brake = Globals.brake_force
 		else:
 			for wheel in wheels:
+				wheel.brake = 0
 				wheel.engine_force = -Globals.engine_force/2
 	else:
 		for wheel in wheels:
+			wheel.brake = 0
 			wheel.engine_force = 0
