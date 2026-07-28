@@ -15,6 +15,8 @@ const BRICK_SCENE = preload("res://assets/brick.tscn")
 @onready var engine_pane = $engine_pane
 @onready var wheel_pane = $wheel_pane
 
+const BRICK_SIZE = Vector3(0.3, 0.3, 0.3)
+
 func _ready() -> void:
 	car.editor_mode = true
 	car_cam.current = false
@@ -58,12 +60,15 @@ func _process(_delta: float) -> void:
 		for child in car.get_children():
 			if child.name.contains("brick"):
 				child.find_child("CollisionShape3D").disabled = true
-
+		
 		if result and (result.collider == car or result.collider.name.contains("brick")):
-			var brick = BRICK_SCENE.instantiate()
-			brick.name = "brick" + str(Globals.bricks.size())
 			var hit_global = result.position + result.normal * 0.15
+			if hit_global.y - 0.15 < car.get_node("floor").global_position.y:
+				return
+				
+			var brick = BRICK_SCENE.instantiate()
 			brick.position = car.to_local(hit_global)
+			brick.name = "brick" + str(Globals.bricks.size())
 			car.add_child(brick)
 			Globals.bricks.append(brick.position)
 
