@@ -24,7 +24,8 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if engine.mouse_hovering:
-		if Input.is_action_just_pressed("select") and not wheel_pane.visible:
+		if Input.is_action_just_pressed("select"):
+			wheel_pane.visible = false
 			engine_pane.visible = !engine_pane.visible
 			engine.change_color(Color(0, 255, 0) if engine_pane.visible else Color(0, 0, 0))
 			
@@ -33,21 +34,18 @@ func _process(_delta: float) -> void:
 	else:
 		engine.change_color(Color(0, 255, 0) if engine_pane.visible else Color(0, 0, 0))
 	
-	var hovering_wheel = false
-	
 	if fr.hovering_wheel:
-		hovering_wheel = true
-		if not wheel_pane.visible:
+		if Input.is_action_just_pressed("select"):
+			engine_pane.visible = false
+			wheel_pane.visible = !wheel_pane.visible
+			fr.change_color(Color(0, 255, 0) if wheel_pane.visible else Color(0, 0, 0))
+			
+		if !wheel_pane.visible:
 			fr.change_color(Color(0, 0.5, 0))
-	
-	if hovering_wheel and Input.is_action_just_pressed("select") and not engine_pane.visible:
-		wheel_pane.visible = !wheel_pane.visible
-		# same mesh used for all wheels, no use repeating
+	else:
 		fr.change_color(Color(0, 255, 0) if wheel_pane.visible else Color(0, 0, 0))
-	if not hovering_wheel and not wheel_pane.visible:
-		fr.change_color(Color(0, 0, 0)) # same as above ^
 
-	if Input.is_action_just_pressed("select") and not engine.mouse_hovering and not hovering_wheel and not engine_pane.visible and not wheel_pane.visible:
+	if Input.is_action_just_pressed("select") and not engine.mouse_hovering and not fr.hovering_wheel and not engine_pane.visible and not wheel_pane.visible:
 		for child in car.get_children():
 			if child.name.contains("brick"):
 				child.find_child("CollisionShape3D").disabled = false
