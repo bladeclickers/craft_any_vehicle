@@ -61,11 +61,11 @@ func _process(_delta: float) -> void:
 		
 		if result and (result.collider == car or result.collider.name.contains("brick")):
 			var hit_global = result.position + result.normal * 0.15
-			if hit_global.y - 0.15 < car.get_node("floor").global_position.y:
+			if hit_global.y - 0.18 < car.get_node("floor").global_position.y:
 				return
 				
 			var brick = BRICK_SCENE.instantiate()
-			brick.position = car.to_local(hit_global)
+			brick.position = car.to_local(hit_global + Vector3(0, 0.01, 0))
 			brick.name = "brick" + str(Globals.bricks.size())
 			car.add_child(brick)
 			Globals.bricks.append(brick.position)
