@@ -1,8 +1,12 @@
 [gd_scene format=3 uid="uid://bemefyn18xaw6"]
 
+[ext_resource type="Script" uid="uid://b8e21uyke4bae" path="res://assets/scripts/brick_box.gd" id="1_kq7je"]
+
 [sub_resource type="BoxMesh" id="BoxMesh_f75wj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e4klq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f75wj"]
 
 [node name="Brick" type="StaticBody3D" unique_id=1544341559]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -0.029296875, -0.026321411)
@@ -13,3 +17,10 @@ mesh = SubResource("BoxMesh_f75wj")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1527635591]
 shape = SubResource("BoxShape3D_e4klq")
 disabled = true
+
+[node name="brick_box" type="Area3D" parent="." unique_id=1569444728]
+transform = Transform3D(0.99, 0, 0, 0, 0.99, 0, 0, 0, 0.99, 0, 0, 0)
+script = ExtResource("1_kq7je")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="brick_box" unique_id=230898360]
+shape = SubResource("BoxShape3D_f75wj")
