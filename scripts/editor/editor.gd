@@ -65,7 +65,7 @@ func _process(_delta: float) -> void:
 				return
 				
 			var brick = BRICK_SCENE.instantiate()
-			brick.position = car.to_local(hit_global + Vector3(0, 0.01, 0))
+			brick.position = car.to_local(hit_global)
 			brick.name = "brick" + str(Globals.bricks.size())
 			car.add_child(brick)
 			Globals.bricks.append(brick.position)
