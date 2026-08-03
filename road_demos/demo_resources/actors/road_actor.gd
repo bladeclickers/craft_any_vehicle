@@ -101,7 +101,7 @@ func _get_player_input() -> Vector3:
 
 func _physics_process(delta: float) -> void:
 	for a in area.get_overlapping_areas():
-		if a.name == "car_size":
+		if a.name == "car_size" or a.name == "brick_box":
 			return
 	
 	velocity.y = 0
