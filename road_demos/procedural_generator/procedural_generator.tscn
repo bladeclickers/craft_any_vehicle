@@ -1,0 +1,136 @@
+[gd_scene format=3 uid="uid://c57yq8evxe3w3"]
+
+[ext_resource type="Script" uid="uid://bnuy4u6ii3xov" path="res://road_demos/procedural_generator/procedural_generator.gd" id="1_hjcst"]
+[ext_resource type="Script" uid="uid://bxp3i4cnonh8y" path="res://addons/road-generator/nodes/road_manager.gd" id="2_066ph"]
+[ext_resource type="Script" uid="uid://bgrkhnppgqig4" path="res://road_demos/procedural_generator/road_actor_manager.gd" id="3_18wel"]
+[ext_resource type="PackedScene" uid="uid://bo55v7mk1vavq" path="res://road_demos/demo_resources/actors/RoadActor.tscn" id="4_re2kk"]
+[ext_resource type="PackedScene" uid="uid://carbat5rk66g0" path="res://assets/base_car.tscn" id="5_frqwa"]
+[ext_resource type="Script" uid="uid://cph7euje06kel" path="res://addons/road-generator/nodes/road_container.gd" id="5_pvynn"]
+[ext_resource type="Material" uid="uid://dpashsuk5lr4x" path="res://addons/road-generator/resources/road_texture.material" id="6_11u7d"]
+[ext_resource type="Script" uid="uid://difs1qg4mpcpw" path="res://addons/road-generator/nodes/road_point.gd" id="7_qlg0i"]
+[ext_resource type="Script" uid="uid://bajcvw38oymwm" path="res://road_demos/procedural_generator/road_actor_spawner.gd" id="8_8qnhs"]
+[ext_resource type="Theme" uid="uid://bos557pj10dx8" path="res://road_demos/demo_resources/demo_ui.theme" id="9_055ar"]
+[ext_resource type="Script" uid="uid://d1cr6iyajak8t" path="res://road_demos/procedural_generator/ui.gd" id="11_g68no"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yk3vy"]
+font_size = 24
+outline_size = 6
+outline_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_g68no"]
+font_size = 24
+outline_size = 6
+outline_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
+
+[sub_resource type="Environment" id="Environment_v4pga"]
+background_mode = 1
+background_color = Color(0.609661, 0.733591, 0.806032, 1)
+
+[node name="ProceduralGenerator" type="Node3D" unique_id=1284861345]
+script = ExtResource("1_hjcst")
+
+[node name="RoadManager" type="Node3D" parent="." unique_id=2009473549]
+script = ExtResource("2_066ph")
+
+[node name="vehicles" type="Node3D" parent="RoadManager" unique_id=421132924]
+script = ExtResource("3_18wel")
+road_actor_scenes = Array[PackedScene]([ExtResource("4_re2kk")])
+
+[node name="BaseCar" parent="RoadManager/vehicles" unique_id=347472439 instance=ExtResource("5_frqwa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4304123, 0)
+
+[node name="Road_001" type="Node3D" parent="RoadManager" unique_id=1716143359]
+script = ExtResource("5_pvynn")
+material_resource = ExtResource("6_11u7d")
+use_lowpoly_preview = true
+generate_ai_lanes = true
+auto_free_vehicles = false
+draw_lanes_editor = true
+edge_containers = Array[NodePath]([NodePath(""), NodePath("")])
+edge_rp_targets = Array[NodePath]([NodePath(""), NodePath("")])
+edge_rp_target_dirs = Array[int]([-1, -1])
+edge_rp_locals = Array[NodePath]([NodePath("RP_001"), NodePath("RP_002")])
+edge_rp_local_dirs = Array[int]([0, 1])
+
+[node name="RP_001" type="Node3D" parent="RoadManager/Road_001" unique_id=302093728]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 21.9997)
+script = ExtResource("7_qlg0i")
+traffic_dir = Array[int]([2, 2, 1, 1])
+lanes = Array[int]([2, 4, 4, 2])
+prior_mag = 15.0
+next_mag = 15.0
+alignment = 1
+prior_pt_init = NodePath("../RP_002")
+
+[node name="ActorSpawner" type="Node3D" parent="RoadManager/Road_001/RP_001" unique_id=579709878]
+script = ExtResource("8_8qnhs")
+actor_manager_path = NodePath("../../../vehicles")
+
+[node name="RP_002" type="Node3D" parent="RoadManager/Road_001" unique_id=825536913]
+transform = Transform3D(0.999842, -0.000116941, 0.0178009, 0, 0.999978, 0.00656924, -0.0178013, -0.0065682, 0.99982, -0.677433, 0.25, -16.0496)
+script = ExtResource("7_qlg0i")
+traffic_dir = Array[int]([2, 2, 1, 1])
+lanes = Array[int]([2, 4, 4, 2])
+prior_mag = 15.0
+next_mag = 15.0
+alignment = 1
+next_pt_init = NodePath("../RP_001")
+
+[node name="ActorSpawner" type="Node3D" parent="RoadManager/Road_001/RP_002" unique_id=1213894749]
+script = ExtResource("8_8qnhs")
+actor_manager_path = NodePath("../../../vehicles")
+
+[node name="UI" type="Control" parent="." unique_id=1400298554]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = -39.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("9_055ar")
+script = ExtResource("11_g68no")
+
+[node name="speedometer" type="Label" parent="UI" unique_id=671493583]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 91.0
+offset_bottom = 38.0
+text = "Speed: "
+label_settings = SubResource("LabelSettings_yk3vy")
+
+[node name="engine_idenfifier" type="Label" parent="UI" unique_id=640822428]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 42.0
+offset_right = 97.0
+offset_bottom = 76.0
+text = "Engine: "
+label_settings = SubResource("LabelSettings_g68no")
+
+[node name="brake_idenfifier" type="Label" parent="UI" unique_id=1216912090]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 80.0
+offset_right = 161.0
+offset_bottom = 114.0
+text = "Brake Power:"
+label_settings = SubResource("LabelSettings_g68no")
+
+[node name="mass_idenfifier" type="Label" parent="UI" unique_id=1767008975]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 118.0
+offset_right = 97.0
+offset_bottom = 152.0
+text = "Mass: "
+label_settings = SubResource("LabelSettings_g68no")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2103075458]
+transform = Transform3D(1, 0, 0, 0, 0.151382, 0.988475, 0, -0.988475, 0.151382, 0, 3.50568, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=47546793]
+environment = SubResource("Environment_v4pga")

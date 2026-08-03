@@ -19,6 +19,7 @@ const BRICK_SIZE = Vector3(0.3, 0.3, 0.3)
 
 func _ready() -> void:
 	car.editor_mode = true
+	car.get_node("car_size").free()
 	car_cam.current = false
 	editor_cam.current = true
 
@@ -77,4 +78,5 @@ func _process(_delta: float) -> void:
 		Globals.bricks.clear()
 
 func _on_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/track.tscn")
+	#get_tree().change_scene_to_file("res://scenes/track.tscn")
+	get_tree().change_scene_to_file("res://road_demos/procedural_generator/procedural_generator.tscn")

@@ -1360,9 +1360,9 @@ func _invalidate_edge(_idx, autofix: bool, reason=""):
 	if _drag_init_transform:
 		# We are mid-drag, so don't mess with edges yet
 		return
-	push_warning("Invalid cross-container connection, %s with edge index %s%s" % [
-		self.name, _idx, reason_str
-	])
+	#push_warning("Invalid cross-container connection, %s with edge index %s%s" % [
+	#	self.name, _idx, reason_str
+	#])
 	if not autofix:
 		return
 	edge_containers[_idx] = ^""
