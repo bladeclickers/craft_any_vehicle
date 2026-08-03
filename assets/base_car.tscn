@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://carbat5rk66g0"]
 
-[ext_resource type="Script" uid="uid://tlg06hv6xh6u" path="res://assets/base_car.gd" id="1_5olyx"]
+[ext_resource type="Script" uid="uid://tlg06hv6xh6u" path="res://scripts/base_car.gd" id="1_5olyx"]
 [ext_resource type="Script" uid="uid://ygdgkle6aa4f" path="res://assets/scripts/engine.gd" id="2_1ca31"]
 [ext_resource type="Script" uid="uid://calafhrv463i8" path="res://assets/scripts/wheel.gd" id="2_h7toe"]
 [ext_resource type="AudioStream" uid="uid://cmtaefea4gy1d" path="res://sfx/car.mp3" id="4_mtj2f"]

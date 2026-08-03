@@ -78,5 +78,5 @@ func _process(_delta: float) -> void:
 		Globals.bricks.clear()
 
 func _on_button_pressed() -> void:
-	#get_tree().change_scene_to_file("res://scenes/track.tscn")
-	get_tree().change_scene_to_file("res://road_demos/procedural_generator/procedural_generator.tscn")
+	#Transition.change_scene("res://scenes/track.tscn")
+	Transition.change_scene("res://road_demos/procedural_generator/procedural_generator.tscn")

@@ -18,6 +18,7 @@ boot_splash/bg_color=Color(0.35933197, 0.5577739, 1, 1)
 [autoload]
 
 Globals="*uid://nh5eilk2vwnw"
+Transition="*uid://bma5w46bqpw22"
 
 [display]
 
