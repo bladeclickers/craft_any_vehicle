@@ -13,6 +13,7 @@ extends Node3D
 @onready var vehicles: Node = get_node("RoadManager/vehicles")
 @onready var target: Node = get_node("RoadManager/vehicles/BaseCar")
 
+var ran = false
 
 func _init() -> void:
 	randomize()
@@ -24,6 +25,11 @@ func _init() -> void:
 func _physics_process(_delta: float) -> void:
 	update_road()
 	update_stats()
+	if target.loaded and not ran:
+		for child in target.get_children():
+			if child.name.contains("brick"):
+				child.find_child("CollisionShape3D").disabled = false
+		ran = true
 
 
 func xz_target_distance_to(_target: Node3D) -> float:

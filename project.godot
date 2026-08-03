@@ -14,7 +14,6 @@ config/name="craft any vehicle"
 run/main_scene="uid://bi8mnmbj2lhxc"
 config/features=PackedStringArray("4.7", "Forward Plus")
 boot_splash/bg_color=Color(0.35933197, 0.5577739, 1, 1)
-config/icon="res://icon.svg"
 
 [autoload]
 
