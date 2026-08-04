@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://carbat5rk66g0" path="res://assets/base_car.tscn" id="1_b1cmn"]
 [ext_resource type="Script" uid="uid://dtqa5iwsfqqvj" path="res://scripts/editor/editor.gd" id="1_pxqd5"]
+[ext_resource type="PackedScene" uid="uid://cgkap0vdvcq26" path="res://assets/controller.tscn" id="2_eqbpn"]
 [ext_resource type="Script" uid="uid://l5hgysxvqnos" path="res://assets/scripts/pivot.gd" id="3_ba0ut"]
 [ext_resource type="Script" uid="uid://byh3q8tqhceas" path="res://scripts/editor/property_pane.gd" id="4_q68jb"]
 [ext_resource type="Script" uid="uid://dydtamj26k5cv" path="res://scripts/editor/wheel_pane.gd" id="5_xg7d5"]
@@ -34,6 +35,8 @@ default_font_size = 12
 
 [node name="Editor" type="Node3D" unique_id=240211013]
 script = ExtResource("1_pxqd5")
+
+[node name="Controller" parent="." unique_id=499365531 instance=ExtResource("2_eqbpn")]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1322547214]
 transform = Transform3D(3.9447138, 0, 0, 0, 0.19123447, 0, 0, 0, 5.7918286, 0, 0, 0)
