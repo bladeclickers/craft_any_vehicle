@@ -1,6 +1,5 @@
 extends Node2D
 
-const CURSOR_SPEED = 600.0
 var virtual_mouse_pos := Vector2.ZERO 
 
 var active_slider: Range = null
@@ -13,13 +12,13 @@ func _process(delta: float) -> void:
 	var stick := Input.get_vector("jp_a", "jp_d", "jp_w", "jp_s")
 	
 	if stick.length() > 0.0:
-		virtual_mouse_pos += stick * CURSOR_SPEED * delta
+		virtual_mouse_pos += stick * Globals.l_stick_sens * delta
 		get_viewport().warp_mouse(virtual_mouse_pos)
 	else:
 		virtual_mouse_pos = get_viewport().get_mouse_position()
 		
 	if active_slider and stick.length() > 0.0:
-		active_slider.value += stick.x * (active_slider.max_value - active_slider.min_value) * 4 * delta
+		active_slider.value += stick.x * (active_slider.max_value - active_slider.min_value) * 0.5 * delta
 
 	if Input.is_action_just_pressed("jp_select"):
 		active_slider = get_slider_at_position(get_tree().root, virtual_mouse_pos)
@@ -44,7 +43,8 @@ func press_ui_at_position(node: Node, click_pos: Vector2) -> bool:
 			node.emit_signal("button_down")
 			if node is CheckButton or node is CheckBox:
 				if "button_pressed" in node:
-					node.button_pressed = !node.button_pressed
+					node.button_pressed = not node.button_pressed
+					print(node.button_pressed)
 			node.emit_signal("pressed")
 			
 			if node is OptionButton:
