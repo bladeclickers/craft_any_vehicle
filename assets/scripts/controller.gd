@@ -1,6 +1,6 @@
 extends Node2D
 
-const CURSOR_SPEED = 800.0
+const CURSOR_SPEED = 600.0
 var virtual_mouse_pos := Vector2.ZERO 
 
 var active_slider: Range = null
@@ -19,7 +19,7 @@ func _process(delta: float) -> void:
 		virtual_mouse_pos = get_viewport().get_mouse_position()
 		
 	if active_slider and stick.length() > 0.0:
-		active_slider.value += stick.x * (active_slider.max_value - active_slider.min_value) * 0.5 * delta
+		active_slider.value += stick.x * (active_slider.max_value - active_slider.min_value) * 4 * delta
 
 	if Input.is_action_just_pressed("jp_select"):
 		active_slider = get_slider_at_position(get_tree().root, virtual_mouse_pos)

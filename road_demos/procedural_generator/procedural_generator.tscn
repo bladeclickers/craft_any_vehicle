@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://bajcvw38oymwm" path="res://road_demos/procedural_generator/road_actor_spawner.gd" id="8_8qnhs"]
 [ext_resource type="Theme" uid="uid://bos557pj10dx8" path="res://road_demos/demo_resources/demo_ui.theme" id="9_055ar"]
 [ext_resource type="Script" uid="uid://d1cr6iyajak8t" path="res://road_demos/procedural_generator/ui.gd" id="11_g68no"]
+[ext_resource type="PackedScene" uid="uid://bku3wq5tpotuk" path="res://scenes/pause.tscn" id="12_frqwa"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yk3vy"]
 font_size = 24
@@ -134,3 +135,6 @@ transform = Transform3D(1, 0, 0, 0, 0.151382, 0.988475, 0, -0.988475, 0.151382, 
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=47546793]
 environment = SubResource("Environment_v4pga")
+
+[node name="Pause" parent="." unique_id=781328532 instance=ExtResource("12_frqwa")]
+visible = false

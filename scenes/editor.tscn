@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://carbat5rk66g0" path="res://assets/base_car.tscn" id="1_b1cmn"]
 [ext_resource type="Script" uid="uid://dtqa5iwsfqqvj" path="res://scripts/editor/editor.gd" id="1_pxqd5"]
+[ext_resource type="PackedScene" uid="uid://bku3wq5tpotuk" path="res://scenes/pause.tscn" id="2_5lcyj"]
 [ext_resource type="PackedScene" uid="uid://cgkap0vdvcq26" path="res://assets/controller.tscn" id="2_eqbpn"]
 [ext_resource type="Script" uid="uid://l5hgysxvqnos" path="res://assets/scripts/pivot.gd" id="3_ba0ut"]
 [ext_resource type="Script" uid="uid://byh3q8tqhceas" path="res://scripts/editor/property_pane.gd" id="4_q68jb"]
@@ -206,5 +207,8 @@ offset_right = 252.0
 offset_bottom = 59.0
 max_value = 200.0
 value = 40.0
+
+[node name="Pause" parent="." unique_id=781328532 instance=ExtResource("2_5lcyj")]
+visible = false
 
 [connection signal="pressed" from="play" to="." method="_on_button_pressed"]

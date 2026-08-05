@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://bi8mnmbj2lhxc"]
 
 [ext_resource type="PackedScene" uid="uid://cgkap0vdvcq26" path="res://assets/controller.tscn" id="1_bodal"]
-[ext_resource type="Script" uid="uid://ck5qsnxqxmpt2" path="res://scripts/ui/label.gd" id="1_jaeev"]
-[ext_resource type="Script" uid="uid://b5kulm1wy0ifv" path="res://scripts/ui/button.gd" id="2_u80x2"]
+[ext_resource type="Script" uid="uid://72nd1nxcsrgg" path="res://scripts/ui/button.gd" id="2_u80x2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_e4klq"]
 font_size = 64
@@ -30,19 +29,18 @@ color = Color(0.36078432, 0.5568628, 1, 1)
 
 [node name="Label" type="Label" parent="." unique_id=1440636304]
 layout_mode = 0
-offset_left = 289.0
+offset_left = 314.0
 offset_top = 22.0
-offset_right = 815.0
+offset_right = 840.0
 offset_bottom = 110.0
 text = "Craft Any Vehicle"
 label_settings = SubResource("LabelSettings_e4klq")
-script = ExtResource("1_jaeev")
 
 [node name="Button" type="Button" parent="." unique_id=827605143]
 layout_mode = 0
-offset_left = 526.0
+offset_left = 518.0
 offset_top = 555.0
-offset_right = 642.0
+offset_right = 634.0
 offset_bottom = 617.0
 focus_mode = 0
 theme = SubResource("Theme_f75wj")

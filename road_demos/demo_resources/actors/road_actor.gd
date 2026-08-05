@@ -103,6 +103,9 @@ func _physics_process(delta: float) -> void:
 	for a in area.get_overlapping_areas():
 		if a.name == "car_size" or a.name == "brick_box":
 			return
+			
+	if Globals.paused:
+		return
 	
 	velocity.y = 0
 	var target_dir:Vector3 = get_input()

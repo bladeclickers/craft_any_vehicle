@@ -39,6 +39,8 @@ func _ready() -> void:
 	loaded = true
 
 func _physics_process(delta):
+	freeze = Globals.paused
+		
 	if editor_mode:
 		for wheel in wheels:
 			wheel.find_child("StaticBody3D").find_child("CollisionShape3D").disabled = false

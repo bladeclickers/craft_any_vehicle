@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://bku3wq5tpotuk"]
+
+[ext_resource type="Script" uid="uid://ccje5yh0a2e27" path="res://scripts/pause.gd" id="1_aicil"]
+[ext_resource type="PackedScene" uid="uid://cgkap0vdvcq26" path="res://assets/controller.tscn" id="1_m0klm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_r1fnm"]
+font_size = 64
+outline_size = 16
+outline_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_m0klm"]
+font_size = 32
+outline_size = 16
+outline_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
+
+[sub_resource type="Theme" id="Theme_wen6a"]
+default_font_size = 24
+
+[node name="Pause" type="Control" unique_id=781328532]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_aicil")
+
+[node name="Controller" parent="." unique_id=499365531 instance=ExtResource("1_m0klm")]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=271710200]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 0.58431375)
+
+[node name="Label" type="Label" parent="." unique_id=957348930]
+layout_mode = 0
+offset_left = 314.0
+offset_top = 22.0
+offset_right = 840.0
+offset_bottom = 110.0
+text = "Craft Any Vehicle"
+label_settings = SubResource("LabelSettings_r1fnm")
+
+[node name="Label2" type="Label" parent="." unique_id=334739078]
+layout_mode = 0
+offset_left = 519.0
+offset_top = 119.0
+offset_right = 635.0
+offset_bottom = 164.0
+text = "Paused"
+label_settings = SubResource("LabelSettings_m0klm")
+
+[node name="Button" type="Button" parent="." unique_id=1656622019]
+layout_mode = 0
+offset_left = 504.0
+offset_top = 555.0
+offset_right = 646.0
+offset_bottom = 617.0
+focus_mode = 0
+theme = SubResource("Theme_wen6a")
+text = "Continue"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
