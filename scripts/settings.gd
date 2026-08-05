@@ -7,7 +7,7 @@ extends Panel
 @onready var r_stick_sens = $r_stick_sens
 @onready var r_stick_sens_label = $r_stick_sens_label
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	Globals.mouse_sens = mouse_sens.value / 10000
 	mouse_sens_label.text = str(int(mouse_sens.value))
 	Globals.l_stick_sens = l_stick_sens.value * 10
