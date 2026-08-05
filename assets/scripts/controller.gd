@@ -44,7 +44,6 @@ func press_ui_at_position(node: Node, click_pos: Vector2) -> bool:
 			if node is CheckButton or node is CheckBox:
 				if "button_pressed" in node:
 					node.button_pressed = not node.button_pressed
-					print(node.button_pressed)
 			node.emit_signal("pressed")
 			
 			if node is OptionButton:

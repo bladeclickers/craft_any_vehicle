@@ -19,7 +19,6 @@ func _init() -> void:
 	randomize()
 	var rseed = randi()
 	seed(rseed)
-	print("Seed number: ", rseed)
 
 
 func _physics_process(_delta: float) -> void:
