@@ -44,6 +44,7 @@ offset_left = 526.0
 offset_top = 555.0
 offset_right = 642.0
 offset_bottom = 617.0
+focus_mode = 0
 theme = SubResource("Theme_f75wj")
 text = "Play"
 script = ExtResource("2_u80x2")
