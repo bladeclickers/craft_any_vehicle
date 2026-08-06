@@ -20,7 +20,6 @@ func _init() -> void:
 	var rseed = randi()
 	seed(rseed)
 
-
 func _physics_process(_delta: float) -> void:
 	update_road()
 	update_stats()

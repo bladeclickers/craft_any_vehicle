@@ -6,6 +6,8 @@ extends Panel
 @onready var l_stick_sens_label = $l_stick_sens_label
 @onready var r_stick_sens = $r_stick_sens
 @onready var r_stick_sens_label = $r_stick_sens_label
+@onready var deadzone = $deadzone
+@onready var deadzone_label = $deadzone_label
 
 func _process(_delta: float) -> void:
 	Globals.mouse_sens = mouse_sens.value / 10000
@@ -14,3 +16,5 @@ func _process(_delta: float) -> void:
 	l_stick_sens_label.text = str(int(l_stick_sens.value))
 	Globals.r_stick_sens = r_stick_sens.value / 10
 	r_stick_sens_label.text = str(int(r_stick_sens.value))
+	Globals.deadzone = deadzone.value / 100
+	deadzone_label.text = str(int(deadzone.value))

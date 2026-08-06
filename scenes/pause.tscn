@@ -165,4 +165,31 @@ offset_bottom = 129.0
 text = "30"
 label_settings = SubResource("LabelSettings_aicil")
 
+[node name="deadzone" type="HSlider" parent="settings" unique_id=47477208]
+layout_mode = 0
+offset_left = 87.0
+offset_top = 138.0
+offset_right = 308.0
+offset_bottom = 154.0
+max_value = 99.0
+value = 30.0
+
+[node name="Label6" type="Label" parent="settings" unique_id=2037938921]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 138.0
+offset_right = 80.0
+offset_bottom = 155.0
+text = "Deadzone"
+label_settings = SubResource("LabelSettings_aicil")
+
+[node name="deadzone_label" type="Label" parent="settings" unique_id=1682999274]
+layout_mode = 0
+offset_left = 316.0
+offset_top = 138.0
+offset_right = 330.0
+offset_bottom = 155.0
+text = "30"
+label_settings = SubResource("LabelSettings_aicil")
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

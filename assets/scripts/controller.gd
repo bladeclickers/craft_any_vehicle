@@ -9,6 +9,9 @@ func _ready() -> void:
 	virtual_mouse_pos = get_viewport().get_mouse_position()
 
 func _process(delta: float) -> void:
+	if Input.get_connected_joypads().is_empty():
+		return
+		
 	var stick := Input.get_vector("jp_a", "jp_d", "jp_w", "jp_s")
 	
 	if stick.length() > 0.0:
