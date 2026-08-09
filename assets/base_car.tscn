@@ -35,7 +35,7 @@ size = Vector3(1, 0.9423828, 1)
 albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xtys4"]
-size = Vector3(1.5735474, 0.6751709, 3.5856647)
+size = Vector3(1.3234634, 0.6751709, 3.3023036)
 
 [node name="BaseCar" type="VehicleBody3D" unique_id=347472439]
 mass = 600.0
@@ -173,7 +173,7 @@ max_distance = 4096.0
 [node name="car_size" type="Area3D" parent="." unique_id=2132205679]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="car_size" unique_id=1653894755]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0014953613, 0.09295654, 0.035740852)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0015449524, 0.09295654, -0.105939746)
 shape = SubResource("BoxShape3D_xtys4")
 
 [connection signal="mouse_entered" from="VehicleWheel3D/StaticBody3D" to="VehicleWheel3D" method="_on_static_body_3d_mouse_entered"]

@@ -79,6 +79,10 @@ func _physics_process(delta):
 
 			if stream.volume_db <= -39.0:
 				stream.stop()
+				
+	if Input.is_action_just_pressed("flip"):
+		rotation.x = 0
+		rotation.z = 0
 	
 	if Input.is_action_just_pressed("camera"):
 		if cam.position == THIRD_PERSON:

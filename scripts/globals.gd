@@ -16,3 +16,4 @@ var mass = 100.0
 var rear_engine = true
 
 var bricks: Array = []
+var engine_types = ["Base Engine", "Medium Engine", "Big Engine"]

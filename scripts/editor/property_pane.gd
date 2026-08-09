@@ -9,32 +9,26 @@ var prev_id = 0
 @onready var engine_select = $engine_select
 @onready var position_toggle = $position_toggle
 
+func set_engine(hp: float, weight: float, engine: String):
+	hp_slider.value = hp
+	weight_slider.value = weight
+	hp_label.text = str(int(hp))
+	weight_label.text = str(int(weight))
+	Globals.engine_type = engine
+	Globals.engine_force = hp
+	Globals.mass = weight
+
+func _ready() -> void:
+	engine_select.selected = Globals.engine_types.find(Globals.engine_type)
+
 func _process(_delta: float) -> void:
 	Globals.rear_engine = position_toggle.button_pressed
 	var id = engine_select.get_selected_id()
 	if id != prev_id:
 		if id == 0:
-			hp_slider.value = 400
-			weight_slider.value = 100
-			hp_label.text = "400"
-			weight_label.text = "100"
-			Globals.engine_type = "Base Engine"
-			Globals.engine_force = 400.0
-			Globals.mass = 100.0
+			set_engine(400.0, 100.0, "Base Engine")
 		elif id == 1:
-			hp_slider.value = 700
-			weight_slider.value = 200
-			hp_label.text = "700"
-			weight_label.text = "200"
-			Globals.engine_type = "Medium Engine"
-			Globals.engine_force = 700.0
-			Globals.mass = 200.0
+			set_engine(700.0, 200.0, "Medium Engine")
 		elif id == 2:
-			hp_slider.value = 1200
-			weight_slider.value = 400
-			hp_label.text = "1200"
-			weight_label.text = "400"
-			Globals.engine_type = "Big Engine"
-			Globals.engine_force = 1200.0
-			Globals.mass = 400.0
+			set_engine(1200.0, 400.0, "Big Engine")
 		prev_id = id
