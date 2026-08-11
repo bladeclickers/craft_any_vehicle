@@ -174,7 +174,6 @@ func _on_road_updated(updated_segments) -> void:
 func _on_spawn_timeout() -> void:
 	_run_timer(_spawn_timer.wait_time)
 
-
 ## Internal function for code deduplication, see description above
 func _run_timer(prior_delay: float) -> void:
 	assert( ! _spawn_lanes.is_empty() && _spawn_delays.size() >= _spawn_lanes.size() )
@@ -190,7 +189,9 @@ func _run_timer(prior_delay: float) -> void:
 				print("Spawn timer ", _spawn_timer, " fired for lane ", _spawn_lanes[idx])
 			_spawn_delays[idx] = randf_range(spawn_time_min, spawn_time_max)
 			var lane_start: Vector3 = _spawn_lanes[idx].to_global(_spawn_lanes[idx].curve.get_point_position(0))
-			_actor_manager.add_actor(lane_start, _spawn_lanes[idx])
+			if _actor_manager.has_method("add_actor"):
+				if _actor_manager.add_actor(lane_start, _spawn_lanes[idx]):
+					pass
 		new_wait = min(new_wait, _spawn_delays[idx])
 	assert( ! is_inf(new_wait) )
 	_spawn_timer.wait_time = new_wait

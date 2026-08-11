@@ -81,6 +81,9 @@ func _physics_process(delta):
 				stream.stop()
 				
 	if Input.is_action_just_pressed("flip"):
+		position.y += 2
+		linear_velocity = Vector3.ZERO
+		angular_velocity = Vector3.ZERO
 		rotation.x = 0
 		rotation.z = 0
 	
@@ -89,6 +92,9 @@ func _physics_process(delta):
 			cam.position = FIRST_PERSON
 		else:
 			cam.position = THIRD_PERSON
+			
+	if global_position.y < -30:
+		Transition.change_scene("res://scenes/editor.tscn")
 	
 	var target_steer = 0.0
 	if Input.is_action_pressed("a"):
