@@ -94,7 +94,7 @@ func _physics_process(delta):
 			cam.position = THIRD_PERSON
 			
 	if global_position.y < -30:
-		Transition.change_scene("res://scenes/editor.tscn")
+		Transition.change_scene("res://scenes/death.tscn")
 	
 	var target_steer = 0.0
 	if Input.is_action_pressed("a"):

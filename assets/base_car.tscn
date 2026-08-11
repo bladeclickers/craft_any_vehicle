@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://tlg06hv6xh6u" path="res://scripts/base_car.gd" id="1_5olyx"]
 [ext_resource type="Script" uid="uid://ygdgkle6aa4f" path="res://assets/scripts/engine.gd" id="2_1ca31"]
 [ext_resource type="Script" uid="uid://calafhrv463i8" path="res://assets/scripts/wheel.gd" id="2_h7toe"]
-[ext_resource type="AudioStream" uid="uid://cmtaefea4gy1d" path="res://sfx/car.mp3" id="4_mtj2f"]
+[ext_resource type="AudioStream" uid="uid://cmtaefea4gy1d" path="res://media/car.mp3" id="4_mtj2f"]
 [ext_resource type="Script" uid="uid://l5hgysxvqnos" path="res://assets/scripts/pivot.gd" id="5_vbq03"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e4klq"]

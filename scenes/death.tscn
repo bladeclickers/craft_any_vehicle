@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://cj32aveseuj7"]
+
+[ext_resource type="VideoStream" uid="uid://bb2ewhnftbfj" path="res://media/you_died.ogv" id="1_0hhgj"]
+[ext_resource type="Script" uid="uid://bkcom46nerlt" path="res://scripts/death.gd" id="1_w8wr1"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_e4klq"]
+
+[node name="Death" type="Node2D" unique_id=1106678534]
+script = ExtResource("1_w8wr1")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1216125252]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=1868869836]
+position = Vector2(-0.2500047, -0.24218938)
+scale = Vector2(0.6, 0.6)
+mesh = SubResource("BoxMesh_e4klq")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="MeshInstance2D" unique_id=1603742497]
+offset_left = -0.4995715
+offset_top = -0.49922848
+offset_right = 11954.273
+offset_bottom = 3411.0537
+stream = ExtResource("1_0hhgj")
+autoplay = true
+
+[connection signal="finished" from="MeshInstance2D/VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]

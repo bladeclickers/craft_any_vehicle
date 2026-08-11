@@ -11,7 +11,8 @@ var ran = false
 
 func _process(_delta: float) -> void:
 	var speed = car.linear_velocity.dot(car.global_transform.basis.z)
-	speedometer.text = "Speed: " + str(round(speed*10)/10)
+	var speed_km_h = speed * 3.6
+	speedometer.text = "Speed: " + str(round(speed_km_h*10)/10) + " km/h"
 	engine_identifier.text = "Engine: " + Globals.engine_type
 	brake_identifier.text = "Brake Power: " + str(Globals.brake_force)
 	mass_identifier.text = "Mass: " + str(car.mass) + "kg"
