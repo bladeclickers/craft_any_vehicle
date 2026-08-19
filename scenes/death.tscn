@@ -25,5 +25,3 @@ offset_right = 11954.273
 offset_bottom = 3411.0537
 stream = ExtResource("1_0hhgj")
 autoplay = true
-
-[connection signal="finished" from="MeshInstance2D/VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]
